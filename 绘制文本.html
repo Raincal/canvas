@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <canvas id="drawing" width="200" height="200">canvas</canvas>
+    <canvas id="hello" width="200" height="200">canvas</canvas>
+</body>
+<script>
+    var drawing = document.getElementById('drawing');
+    var hello = document.getElementById('hello');
+    if(drawing.getContext){
+        var context = drawing.getContext('2d');
+        context.beginPath();
+        context.arc(100, 100, 99, 0, 2 * Math.PI, false);
+
+        context.moveTo(194, 100);
+        context.arc(100, 100, 94, 0, 2 * Math.PI, false);
+
+        context.moveTo(100, 100);
+        context.lineTo(100, 20);
+
+        context.moveTo(100, 100);
+        context.lineTo(35, 100);
+
+        context.font = "bold 14px Arial";
+        context.textAlign = "center";
+        context.textBaseline = "middle";
+        context.fillText("12", 100, 18);
+
+        context.stroke();
+    }
+    if(hello.getContext){
+        var context2 = hello.getContext('2d');
+        var fontSize = 100;
+        context2.font = fontSize + 'px Arial';
+        while(context2.measureText("Hello world!").width > 140){
+            fontSize--;
+            context2.font = fontSize + 'px Arial';
+        }
+        context2.fillText("Hello world!", 10, 20);
+        context2.fillText("Font size is " + fontSize + 'px', 10, 50);
+    }
+</script>
+</html>
